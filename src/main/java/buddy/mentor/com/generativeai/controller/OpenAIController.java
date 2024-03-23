@@ -1,10 +1,7 @@
 package buddy.mentor.com.generativeai.controller;
 
-import buddy.mentor.com.generativeai.dto.bookDetails;
 import buddy.mentor.com.generativeai.service.OpenAIService;
-import org.springframework.ai.chat.ChatResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
