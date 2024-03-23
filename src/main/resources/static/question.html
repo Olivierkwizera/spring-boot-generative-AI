@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Domanda e risposta</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>Ask a Question</h1>
+<form id="questionForm">
+    <label for="question">Question:</label><br>
+    <input type="text" id="question" name="question"><br><br>
+    <button type="submit">Ask</button>
+</form>
+<div id="responseContainer"></div>
+
+<script>
+    $(document).ready(function(){
+        $("#questionForm").submit(function(event){
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            // Get the question from the input field
+            var question = $("#question").val();
+
+            // Make an AJAX POST call to the endpoint
+            $.ajax({
+                type: "POST",
+                url: "/ai/generate",
+                data: { message: question },
+                success: function(response){
+                    // Display the response in the response container
+                    $("#responseContainer").append("<p>" + response + "</p>");
+                },
+                error: function(xhr, status, error){
+                    // Handle errors
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
