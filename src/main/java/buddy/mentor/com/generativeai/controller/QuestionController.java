@@ -14,7 +14,7 @@ public class QuestionController {
     @Autowired
     OpenAIService aiService;
 
-    @PostMapping(value = "/ai/generate", produces = MediaType.APPLICATION_NDJSON_VALUE)
+    @PostMapping(value = "/ai/generate", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     @ResponseBody
     public Flux<String> generateResponse(@RequestBody String message) {
         return aiService.extractCompletions(message);
